@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: leeban-attendance-backend
+    runtime: node
+    repo: https://github.com/yourusername/leeban-attendance
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: leeban-db
+          property: connectionString
+      - key: TWILIO_ACCOUNT_SID
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: TWILIO_WHATSAPP_NUMBER
+        sync: false
+
+databases:
+  - name: leeban-db
+    plan: free
